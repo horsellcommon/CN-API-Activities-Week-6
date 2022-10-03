@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [data, setData] = useState([]);
-  const [data1, setData1] = useState([]);
-  const [data2, setData2] = useState([])
+  // const [data1, setData1] = useState([]);
+  // const [data2, setData2] = useState([])
 
-  const randNumber = Math.floor(Math.random() * 9)
+  const randNumber = Math.floor(Math.random() * data.length)
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://swapi.dev/api/people/");
+      const response = await fetch("https://swapi.dev/api/people/1");
       const data = await response.json();
       setData(data);
       console.log(data);
@@ -40,7 +40,7 @@ function App() {
   return (
     <div>
       <h1>What Star Wars Character Are You?</h1>
-      <h2>TEMP</h2>
+      {data && <h2>{data.results[randNumber].name}</h2>}
       <button>TEMP</button>
     </div>
   );
